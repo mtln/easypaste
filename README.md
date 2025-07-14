@@ -28,7 +28,7 @@ And by the way, it’s free! If you find it useful, you can [donate](https://don
 
 ## Binary Release Downloads
 * Windows: [easypaste.exe](https://github.com/mtln/easypaste/releases/latest/download/easypaste.exe)
-* Mac: [ceasypaste-installer.pkg](https://github.com/mtln/easypaste/releases/latest/download/easypaste-installer.pkg)
+* Mac: [easypaste-installer.pkg](https://github.com/mtln/easypaste/releases/latest/download/easypaste-installer.pkg)
 
 ### Prerequisites for building your own binary from source
 
