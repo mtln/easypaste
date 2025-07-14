@@ -17,3 +17,6 @@ Thumbs.db
 
 # Local configuration
 local_config.toml
+
+easypaste.exe
+easypaste-installer.pkg
