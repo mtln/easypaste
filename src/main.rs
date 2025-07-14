@@ -40,6 +40,10 @@ struct Args {
     /// Disable automatic pasting of clipboard contents after loading segment
     #[arg(long)]
     no_paste: bool,
+
+    /// Enable verbose logging (info level)
+    #[arg(short, long)]
+    verbose: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -56,8 +60,8 @@ impl Default for Config {
         Self {
             delimiter: "%%%".to_string(),
             file_path: PathBuf::from("input.txt"),
-            hotkey_modifiers: vec!["CMD".to_string(), "SHIFT".to_string()],
-            hotkey_key: "V".to_string(),
+            hotkey_modifiers: vec!["CTRL".to_string(), "SHIFT".to_string()],
+            hotkey_key: "B".to_string(),
             paste: Some(true),
         }
     }
@@ -219,7 +223,7 @@ impl PasterApp {
         let mut modifiers = Modifiers::empty();
         for modifier in &config.hotkey_modifiers {
             match modifier.to_uppercase().as_str() {
-                "CMD" | "SUPER" | "META" => modifiers |= Modifiers::SUPER,
+                "CMD" | "WIN" | "META" => modifiers |= Modifiers::SUPER,
                 "CTRL" | "CONTROL" => modifiers |= Modifiers::CONTROL,
                 "ALT" | "OPTION" => modifiers |= Modifiers::ALT,
                 "SHIFT" => modifiers |= Modifiers::SHIFT,
@@ -257,7 +261,7 @@ impl PasterApp {
                 )
             })?;
 
-        info!("Registered hotkey: {:?}+{}", modifiers, config.hotkey_key);
+            println!("Registered hotkey: {:?}+{}", modifiers, config.hotkey_key);
         Ok(hotkey)
     }
 
@@ -266,11 +270,11 @@ impl PasterApp {
     fn run(&self, config: Config) -> Result<()> {
         let hotkey = self.register_hotkey(&config)?;
 
-        info!("Paster is running. Press the configured hotkey to paste next segment.");
-        info!("File: {}", config.file_path.display());
-        info!("Delimiter: '{}'", config.delimiter);
-        info!("Auto-paste: {}", config.paste.unwrap_or(true));
-        info!("Press Ctrl+C to exit");
+        println!("Paster is running. Press the configured hotkey to paste next segment.");
+        println!("File: {}", config.file_path.display());
+        println!("Delimiter: '{}'", config.delimiter);
+        println!("Auto-paste: {}", config.paste.unwrap_or(true));
+        println!("Press Ctrl+C to exit");
 
         // Show initial preview
         if let Some((segment, note)) = self.text_manager.preview_next_segment() {
@@ -422,9 +426,19 @@ fn load_config(args: &Args) -> Result<Config> {
 }
 
 fn main() -> Result<()> {
-    tracing_subscriber::fmt::init();
-
     let args = Args::parse();
+    
+    // Configure logging level based on verbose flag
+    let log_level = if args.verbose {
+        tracing::Level::INFO
+    } else {
+        tracing::Level::WARN
+    };
+    
+    tracing_subscriber::fmt()
+        .with_max_level(log_level)
+        .init();
+
     let config = load_config(&args)?;
 
     if !config.file_path.exists() {

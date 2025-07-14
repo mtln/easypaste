@@ -13,21 +13,22 @@ And by the way, it’s free! If you find it useful, you can [donate](https://don
 ## Features
 
 - **Cross-platform**: Works on macOS and Windows,
-- **Global hotkeys**: Configurable hotkey combinations (default: Cmd+Shift+V on macOS, Ctrl+Shift+V on others)
+- **Global hotkeys**: Configurable hotkey combinations (default: Ctrl+Shift+B)
 - **Configurable delimiters**: Use any character or string as a delimiter (default: `%%%`)
 - **Single file load**: Loads the input file once at startup
 - **Flexible configuration**: Command-line arguments and configuration file support
 - **Sequential pasting**: Automatically moves to the next segment after each paste
 - **Segment preview**: Shows preview of the next segment before pasting
 - **Internal notes**: Support for inline notes after delimiters that are displayed but not pasted
-- **Optional pasting**: Can disable automatic pasting to only load segments to clipboard
+- **Optional pasting**: Can disable automatic pasting to only load segments to clipboard. This is useful if you want to paste the segments manually or if you don't want to grant additional system privileges for the tool to work (Mac).
+- **Small binary size**: The tool is less than 2MB.
 
 
 ## Installation
 
 ## Binary Release Downloads
 * Windows: [easypaste.exe](https://github.com/mtln/easypaste/releases/latest/download/easypaste.exe)
-* Mac: [ceasypaste-installer.pkg](https://github.com/mtln/easypaste/releases/latest/download/easypaste-installer.pkg)
+* Mac: [easypaste-installer.pkg](https://github.com/mtln/easypaste/releases/latest/download/easypaste-installer.pkg)
 
 ### Prerequisites for building your own binary from source
 
@@ -74,11 +75,11 @@ delimiter = "%%%"
 # Path to the input file
 file_path = "example_input.txt"
 
-# Hotkey modifiers (CMD/SUPER/META, CTRL/CONTROL, ALT/OPTION, SHIFT)
-hotkey_modifiers = ["CMD", "SHIFT"]  # Use ["CTRL", "SHIFT"] on Windows/Linux
+# Hotkey modifiers (CMD/WIN/META, CTRL/CONTROL, ALT/OPTION, SHIFT)
+hotkey_modifiers = ["CTRL", "SHIFT"]  # Use ["CTRL", "SHIFT"] on Windows/Linux
 
 # The trigger key (A-Z, 0-9, SPACE, ENTER/RETURN)
-hotkey_key = "V"
+hotkey_key = "B"
 
 # Enable/disable automatic pasting (optional, defaults to true)
 paste = true
@@ -105,7 +106,7 @@ Internal notes (text after delimiter on the same line) are displayed in the cons
 ## How It Works
 
 1. **Load**: The tool loads your input file and shows a preview of the first segment
-2. **Trigger**: Press your configured hotkey (default: Cmd/Ctrl+Shift+V) to activate the next segment
+2. **Trigger**: Press your configured hotkey (default: Ctrl+Shift+B) to activate the next segment
 3. **Copy & Paste**: The segment is copied to clipboard and automatically pasted (unless `--no-paste` is used)
 4. **Preview**: A preview of the next segment is shown in the console
 5. **Repeat**: Continue pressing the hotkey to move through all segments
@@ -118,7 +119,7 @@ Internal notes (text after delimiter on the same line) are displayed in the cons
 
 ## Limitations
 
-- **Windows delay**: There is a 2 second delay when pasting on Windows. Without this delay, pasting doesn't seem to work reliably.
+- **Windows delay**: There is a 2 second delay when pasting on Windows. Without this delay, pasting doesn't seem to work reliably. In manual paste mode (--no-paste), there is no delay.
 
 ## Disclaimer
 
