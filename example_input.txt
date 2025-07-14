@@ -1,0 +1,19 @@
+Hello, this is the first segment
+%%% This is an internal note
+This is the second segment with multiple lines.
+You can have as much text as you want here.
+%%% Another note here
+Quick snippet for copy-paste
+%%% Short note
+function copyToClipboard() {
+    // This is a JavaScript function
+    navigator.clipboard.writeText("Hello World");
+}
+%%% JS function example
+echo "This is a bash command"
+%%% Bash example
+Here's some lorem ipsum text without line break at the end:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.%%% Long text example
+Another short text without line break.%%% Final note
+Final segment without delimiter at the end 

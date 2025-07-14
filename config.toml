@@ -1,0 +1,16 @@
+# easypaste Configuration File
+
+# The delimiter character or string to use for separating segments
+delimiter = "%%%"
+
+# Path to the input file containing delimited content
+file_path = "example_input.txt"
+
+# Hotkey configuration
+# Available modifiers: CMD/SUPER/META, CTRL/CONTROL, ALT/OPTION, SHIFT
+hotkey_modifiers = ["CTRL", "ALT", "SHIFT"]
+# hotkey_modifiers = ["OPTION"]
+
+# The key to trigger the paste action
+# Supported keys: A-Z, 0-9, SPACE, ENTER/RETURN
+hotkey_key = "X" 
