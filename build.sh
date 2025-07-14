@@ -6,15 +6,20 @@ set -e  # Exit on error
 
 cargo build --release
 
+mkdir -p release
+
+cp target/release/easypaste release/
+
+
 # Code signing
-codesign --deep --force --verbose --options runtime --entitlements entitlements.plist --sign "Developer ID Application: Andri Kraemer (9NCXVF3Y67)" target/release/easypaste
+codesign --deep --force --verbose --options runtime --entitlements entitlements.plist --sign "Developer ID Application: Andri Kraemer (9NCXVF3Y67)" release/easypaste
 
 # Create component package with pkgbuild
 pkgbuild \
   --identifier ch.matlon.easypaste \
   --version 1.0.0 \
   --install-location /usr/local/bin \
-  --root dist \
+  --root release \
   easypaste.pkg
 
 # Create resources folder with HTML dialogs
@@ -100,8 +105,7 @@ xcrun notarytool submit easypaste-installer.pkg --keychain-profile "notary-gfdev
 xcrun stapler staple easypaste-installer.pkg
 
 # Cleanup
-rm -rf target
-rm easypaste.spec
+rm -rf release
 rm -rf resources
 rm distribution.xml
 rm easypaste-installer-unsigned.pkg  # Remove unsigned component .pkg
@@ -113,6 +117,6 @@ echo ""
 echo "✅ Build complete: easypaste-installer.pkg is signed, notarized, and stapled."
 echo ""
 echo "📦 To install, double-click easypaste-installer.pkg."
-echo "💡 After install, open Terminal and run: easypaste"
+echo "💡 After install, open Terminal and run: easypaste --help"
 echo "🧹 To uninstall: sudo rm /usr/local/bin/easypaste"
 echo ""
