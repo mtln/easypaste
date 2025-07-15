@@ -31,12 +31,13 @@ And by the way, it’s free! If you find it useful, you can [donate](https://don
 * Mac: [easypaste-installer.pkg](https://github.com/mtln/easypaste/releases/latest/download/easypaste-installer.pkg)
 
 Once installed on Mac:
-   1. Open the **Terminal** app (e.g. by typing "terminal" in Spotlight Search).
-   2. Type: `easypaste --help`
-    
-   This will start the tool from anywhere in the terminal.
 
-   To uninstall `easypaste` from Mac, open the Terminal and run: `sudo rm /usr/local/bin/easypaste`
+1. Open the **Terminal** app (e.g. by typing "terminal" in Spotlight Search).
+1. Type: `easypaste --help`
+
+This will start the tool from anywhere in the terminal.
+
+To uninstall `easypaste` from Mac, open the Terminal and run: `sudo rm /usr/local/bin/easypaste`
 
 ### Prerequisites for building your own binary from source
 
@@ -96,7 +97,7 @@ Internal notes (text after delimiter on the same line) are displayed in the cons
 
 ## Supported Operating Systems
 
-* **macOS**: Full support with 100ms paste delay
+* **macOS**: Full support if additional system privileges are granted.
 * **Windows**: Full support with 2 second paste delay for reliability
 
 ## Limitations
