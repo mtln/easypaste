@@ -196,13 +196,13 @@ impl TextManager {
     }
 }
 
-struct PasterApp {
+struct EasypasteApp {
     text_manager: Arc<TextManager>,
         clipboard: Arc<Mutex<Clipboard>>,
         hotkey_manager: Arc<Mutex<GlobalHotKeyManager>>,
 }
 
-impl PasterApp {
+impl EasypasteApp {
     fn new(config: Config) -> Result<Self> {
         let text_manager = Arc::new(TextManager::new(config.file_path, config.delimiter)?);
         let clipboard = Arc::new(Mutex::new(
@@ -270,7 +270,7 @@ impl PasterApp {
     fn run(&self, config: Config) -> Result<()> {
         let hotkey = self.register_hotkey(&config)?;
 
-        println!("Paster is running. Press the configured hotkey to paste next segment.");
+        println!("Easypaste is running. Press the configured hotkey to paste next segment.");
         println!("File: {}", config.file_path.display());
         println!("Delimiter: '{}'", config.delimiter);
         println!("Auto-paste: {}", config.paste.unwrap_or(true));
@@ -448,7 +448,7 @@ fn main() -> Result<()> {
         ));
     }
 
-    let app = PasterApp::new(config.clone())?;
+    let app = EasypasteApp::new(config.clone())?;
 
     app.run(config)
 }
