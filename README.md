@@ -2,6 +2,9 @@
 
 A cross-platform clipboard automation tool written in Rust that allows you to sequentially paste delimited text segments from a file using global hotkeys.
 
+Video Tutorial:  
+[![YouTube](https://img.youtube.com/vi/-l8jC_BvEfA/1.jpg)](https://www.youtube.com/watch?v=-l8jC_BvEfA)
+
 ## Why is this useful?
 - If you want to do a **presentation with live coding or typing**, you can use this tool to paste the prepared code or text snippets one by one. No need of error-prone, slow retyping. No need to copy and paste manually.
 - If you want to record a **tutorial or online course**, you achieve a better viewer experience. And you don't waste your time editing and speeding up or or cutting the video after recording to get a good pace if you are a slow or unprecise typer.
