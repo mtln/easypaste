@@ -101,11 +101,11 @@ Internal notes (text after delimiter on the same line) are displayed in the cons
 ## Supported Operating Systems
 
 * **macOS**: Full support if additional system privileges are granted.
-* **Windows**: Full support with 2 second paste delay for reliability
+* **Windows**: Full support with 800ms paste delay for reliability
 
 ## Limitations
 
-- **Windows delay**: There is a 2 second delay when pasting on Windows. Without this delay, pasting doesn't seem to work reliably. In manual paste mode (`--no-paste`), there is no delay.
+- **Windows delay**: There is a 800ms delay when pasting on Windows. Without this delay, pasting doesn't seem to work reliably. In manual paste mode (`--no-paste`), there is no delay.
 
 ## Disclaimer
 

@@ -341,7 +341,7 @@ impl EasypasteApp {
                                             let sleep_duration = if cfg!(target_os = "macos") {
                                                 100
                                             } else if cfg!(target_os = "windows") {
-                                                2000
+                                                700
                                             } else {
                                                 100 // Default for other platforms
                                             };
